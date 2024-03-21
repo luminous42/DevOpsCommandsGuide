@@ -2,7 +2,10 @@
 ## General Commands
 First up, here are some basics to get you started:
 
-```bash docker version ``` – Displays detailed information about your Docker CLI and daemon versions.
+```bash 
+docker version
+```
+ – Displays detailed information about your Docker CLI and daemon versions.
 
 ```bash docker system info ``` – Lists data about your Docker environment, including active plugins and the number of containers and images on your system.
 
