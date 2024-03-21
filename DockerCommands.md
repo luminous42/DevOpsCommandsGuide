@@ -1,66 +1,70 @@
 ## General Commands
+
 First up, here are some basics to get you started:
 
-```bash docker version ``` – Displays detailed information about your Docker CLI and daemon versions.
+`bash docker version ` – Displays detailed information about your Docker CLI and daemon versions.
 
-```bash docker system info ``` – Lists data about your Docker environment, including active plugins and the number of containers and images on your system.
+`bash docker system info ` – Lists data about your Docker environment, including active plugins and the number of containers and images on your system.
 
-```bash docker help ``` – View the help index, a reference of all the supported commands.
+`bash docker help ` – View the help index, a reference of all the supported commands.
 
-```bash docker <command> --help ``` – View the help information about a particular command, including detailed information on the supported option flags.
+`bash docker <command> --help ` – View the help information about a particular command, including detailed information on the supported option flags.
 
-Build Images
+## Build Images
+
 These commands relate to building new images from Dockerfiles:
 
-```bash docker build . ``` – Build the Dockerfile in your working directory into a new image.
+`bash docker build . ` – Build the Dockerfile in your working directory into a new image.
 
-```bash docker build -t example-image:latest . ``` – Build the Dockerfile in your working directory and tag the resulting image as example-image:latest.
+`bash docker build -t example-image:latest . ` – Build the Dockerfile in your working directory and tag the resulting image as example-image:latest.
 
-```bash docker build -f docker/app-dockerfile ``` – Build the Dockerfile at the docker/app-dockerfile path.
+`bash docker build -f docker/app-dockerfile ` – Build the Dockerfile at the docker/app-dockerfile path.
 
-```bash docker build --build-arg foo=bar . ```– Build an image and set the foo build argument to the value bar.
+`bash docker build --build-arg foo=bar . `– Build an image and set the foo build argument to the value bar.
 
-```bash docker build --pull . ``` – Instructs Docker to pull updated versions of the images referenced in FROM instructions in your Dockerfile, before building your new image.
+`bash docker build --pull . ` – Instructs Docker to pull updated versions of the images referenced in FROM instructions in your Dockerfile, before building your new image.
 
-```bash docker build --quiet . ``` – Build an image without emitting any output during the build. The image ID will still be emitted to the terminal when the build completes.
+`bash docker build --quiet . ` – Build an image without emitting any output during the build. The image ID will still be emitted to the terminal when the build completes.
 
-Run Containers
+## Run Containers
+
 After building an image, use these commands to run containers:
 
-```bash docker run example-image:latest ``` – Run a new container using the example-image:latest image. The output from the container’s foreground process will be shown in your terminal.
+`bash docker run example-image:latest ` – Run a new container using the example-image:latest image. The output from the container’s foreground process will be shown in your terminal.
 
-```bash >docker run example-image:latest demo-command ``` – Supplying an argument after the image name sets the command to run inside the container; it will be appended to the image’s entrypoint. (It’s possible to override the entrypoint with the docker run command’s --entrypoint flag.)
+`bash >docker run example-image:latest demo-command ` – Supplying an argument after the image name sets the command to run inside the container; it will be appended to the image’s entrypoint. (It’s possible to override the entrypoint with the docker run command’s --entrypoint flag.)
 
-```bash docker run --rm example-image:latest ``` – The --rm flag instructs Docker to automatically remove the container when it exits instead of allowing it to remain as a stopped container.
+`bash docker run --rm example-image:latest ` – The --rm flag instructs Docker to automatically remove the container when it exits instead of allowing it to remain as a stopped container.
 
-```bash docker run -d example-image:latest ```– Detaches your terminal from the running container, leaving the container in the background.
+`bash docker run -d example-image:latest `– Detaches your terminal from the running container, leaving the container in the background.
 
-```bash docker run -it example-image:latest ``` – Attaches your terminal’s input stream and a TTY to the container. Use this command to run interactive commands inside the container.
+`bash docker run -it example-image:latest ` – Attaches your terminal’s input stream and a TTY to the container. Use this command to run interactive commands inside the container.
 
-```bash docker run --name my-container example-image:latest ``` – Names the new container my-container.
+`bash docker run --name my-container example-image:latest ` – Names the new container my-container.
 
-docker run --hostname my-container example-image:latest – Set the container’s hostname to a specific value (it defaults to the container’s name).
+bash docker run --hostname my-container example-image:latest – Set the container’s hostname to a specific value (it defaults to the container’s name).
 
-docker run --env foo=bar example-image:latest – Set the value of the foo environment variable inside the container to bar.
+`bash docker run --env foo=bar example-image:latest `– Set the value of the foo environment variable inside the container to bar.
 
-docker run --env-file config.env example-image:latest – Populate environment variables inside the container from the file config.env. The file should contain key-value pairs in the format foo=bar.
+`bash docker run --env-file config.env example-image:latest ` – Populate environment variables inside the container from the file config.env. The file should contain key-value pairs in the format foo=bar.
 
-docker run -p 8080:80 example-image:latest – Bind port 8080 on your Docker host to port 80 inside the container. It allows you to visit localhost:8080 to access the network service listening on port 80 inside the container.
+`bash docker run -p 8080:80 example-image:latest ` – Bind port 8080 on your Docker host to port 80 inside the container. It allows you to visit localhost:8080 to access the network service listening on port 80 inside the container.
 
-docker run -v /host-directory:/container-directory example-image:latest – Bind mount /host-directory on your host to /container-directory inside the container. The directory’s contents will be visible on both sides of the mount.
+`bash docker run -v /host-directory:/container-directory example-image:latest` – Bind mount /host-directory on your host to /container-directory inside the container. The directory’s contents will be visible on both sides of the mount.
 
-docker run -v data:/data example-image:latest – Mount the named Docker volume called data to /data inside the container.
+`bash docker run -v data:/data example-image:latest` – Mount the named Docker volume called data to /data inside the container.
 
-docker run --network my-network example-image:latest – Connect the new container to the Docker network called my-network.
+`bash docker run --network my-network example-image:latest `– Connect the new container to the Docker network called my-network.
 
-docker run --restart unless-stopped example-image:latest – Set the container to start automatically when the Docker daemon starts, unless the container has been manually stopped. Other restart policies are also supported.
+`bash docker run --restart unless-stopped example-image:latest ` – Set the container to start automatically when the Docker daemon starts, unless the container has been manually stopped. Other restart policies are also supported.
 
-docker run --privileged example-image:latest – Run the container with privileged access to the host system. This should usually be disabled to maintain security.
+`bash docker run --privileged example-image:latest `– Run the container with privileged access to the host system. This should usually be disabled to maintain security.
 
-Manage Containers
+## Manage Containers
+
 After you’ve started some containers, you can use the following set of commands to manage them:
 
-docker ps – List all the containers currently running on your host. (Learn more: How to use docker ps command)
+`bash docker ps ` – List all the containers currently running on your host. (Learn more: How to use docker ps command)
 
 docker ps -a – List every container on your host, including stopped ones.
 
@@ -84,7 +88,8 @@ docker rm <container> – Delete a container by its ID or name. Use the -f (forc
 
 Read more: How to Stop and Remove Docker Containers.
 
-Copy to and From Containers
+## Copy to and From Containers
+
 The docker cp command facilitates bi-directional copying between containers and your host machine:
 
 docker cp example.txt my-container:/data – Copy example.txt from your host to /data inside the my-container container.
