@@ -3,41 +3,41 @@ First up, here are some basics to get you started:
 
 ```bash docker version ``` – Displays detailed information about your Docker CLI and daemon versions.
 
-docker system info – Lists data about your Docker environment, including active plugins and the number of containers and images on your system.
+```bash docker system info ``` – Lists data about your Docker environment, including active plugins and the number of containers and images on your system.
 
-docker help – View the help index, a reference of all the supported commands.
+```bash docker help ``` – View the help index, a reference of all the supported commands.
 
-docker <command> --help – View the help information about a particular command, including detailed information on the supported option flags.
+```bash docker <command> --help ``` – View the help information about a particular command, including detailed information on the supported option flags.
 
 Build Images
 These commands relate to building new images from Dockerfiles:
 
-docker build . – Build the Dockerfile in your working directory into a new image.
+```bash docker build . ``` – Build the Dockerfile in your working directory into a new image.
 
-docker build -t example-image:latest . – Build the Dockerfile in your working directory and tag the resulting image as example-image:latest.
+```bash docker build -t example-image:latest . ``` – Build the Dockerfile in your working directory and tag the resulting image as example-image:latest.
 
-docker build -f docker/app-dockerfile – Build the Dockerfile at the docker/app-dockerfile path.
+```bash docker build -f docker/app-dockerfile ``` – Build the Dockerfile at the docker/app-dockerfile path.
 
-docker build --build-arg foo=bar . – Build an image and set the foo build argument to the value bar.
+```bash docker build --build-arg foo=bar . ```– Build an image and set the foo build argument to the value bar.
 
-docker build --pull . – Instructs Docker to pull updated versions of the images referenced in FROM instructions in your Dockerfile, before building your new image.
+```bash docker build --pull . ``` – Instructs Docker to pull updated versions of the images referenced in FROM instructions in your Dockerfile, before building your new image.
 
-docker build --quiet . – Build an image without emitting any output during the build. The image ID will still be emitted to the terminal when the build completes.
+```bash docker build --quiet . ``` – Build an image without emitting any output during the build. The image ID will still be emitted to the terminal when the build completes.
 
 Run Containers
 After building an image, use these commands to run containers:
 
-docker run example-image:latest – Run a new container using the example-image:latest image. The output from the container’s foreground process will be shown in your terminal.
+```bash docker run example-image:latest ``` – Run a new container using the example-image:latest image. The output from the container’s foreground process will be shown in your terminal.
 
->docker run example-image:latest demo-command – Supplying an argument after the image name sets the command to run inside the container; it will be appended to the image’s entrypoint. (It’s possible to override the entrypoint with the docker run command’s --entrypoint flag.)
+```bash >docker run example-image:latest demo-command ``` – Supplying an argument after the image name sets the command to run inside the container; it will be appended to the image’s entrypoint. (It’s possible to override the entrypoint with the docker run command’s --entrypoint flag.)
 
-docker run --rm example-image:latest – The --rm flag instructs Docker to automatically remove the container when it exits instead of allowing it to remain as a stopped container.
+```bash docker run --rm example-image:latest ``` – The --rm flag instructs Docker to automatically remove the container when it exits instead of allowing it to remain as a stopped container.
 
-docker run -d example-image:latest – Detaches your terminal from the running container, leaving the container in the background.
+```bash docker run -d example-image:latest ```– Detaches your terminal from the running container, leaving the container in the background.
 
-docker run -it example-image:latest – Attaches your terminal’s input stream and a TTY to the container. Use this command to run interactive commands inside the container.
+```bash docker run -it example-image:latest ``` – Attaches your terminal’s input stream and a TTY to the container. Use this command to run interactive commands inside the container.
 
-docker run --name my-container example-image:latest – Names the new container my-container.
+```bash docker run --name my-container example-image:latest ``` – Names the new container my-container.
 
 docker run --hostname my-container example-image:latest – Set the container’s hostname to a specific value (it defaults to the container’s name).
 
